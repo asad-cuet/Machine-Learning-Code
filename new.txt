@@ -1,0 +1,62 @@
+What is schema.csv file?
+
+Schema file represents about columns clearly.
+
+for all col:pd.read_csv(name_var,index_col='Column')
+
+for 1 col:pd.read_csv(name_var,index_col='Column').loc['column']
+
+For q. series:schema_raw=pd.read_csv(name_var,index_col='Column').QuestionText
+
+    now for get Q. just type: schema_raw['col']
+
+
+
+Clean data step:
+
+1.df.info()    ,see dtype,there is object type,which shoub be numeric.
+
+2.find reason of object type: df.col.unique()      ,observe the non-numeric value
+
+3.replace non-num by num=Nan    ,how: pd.to_numeric(df.col,errors='coerce')
+
+4.after 3 for all num col.observe etc by df.describe().
+
+5.Remove illogical row by:  pd_df.drop(df[df.col>10].index,inplace=True)
+
+6.Clean gender type column
+
+pd_df.columns
+
+
+drop col: [old]
+
+  pd_df.drop(columns=['col'],inplace=True)
+
+drop row:
+
+   pd_df.drop(df[df.col>10].index,inplace=True)
+
+Type value Counts of a col:
+
+   pd_df['col'].value_counts()
+
+Index on plotting:
+   df = data.col.value_counts()
+   sns.barplot(x=df.index,y=df)
+
+
+Pie Chart:
+
+gender_counts = survey_df.Gender.value_counts()
+plt.figure(figsize=(12,6))
+plt.title(schema.Gender)
+plt.pie(gender_counts, labels=gender_counts.index, autopct='%1.1f%%', startangle=180);
+
+
+Plot on 1 col based on how much:
+
+sns.countplot(y=survey_df.EdLevel)
+plt.xticks(rotation=75);
+
+
