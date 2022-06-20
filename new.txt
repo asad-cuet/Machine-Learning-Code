@@ -16,15 +16,15 @@ Clean data step:
 
 1.df.info()    ,see dtype,there is object type,which shoub be numeric.
 
-2.find reason of object type: df.col.unique()      ,observe the non-numeric value
+2.find reason of object type: df.col.unique()         ,observe the non-numeric value   // .nunique() returns quantity
 
-3.replace non-num by num=Nan    ,how: pd.to_numeric(df.col,errors='coerce')
+3.replace non-num by num=Nan    ,how:df.col= pd.to_numeric(df.col,errors='coerce')
 
 4.after 3 for all num col.observe etc by df.describe().
 
 5.Remove illogical row by:  pd_df.drop(df[df.col>10].index,inplace=True)
 
-6.Clean gender type column
+6.Clean gender type column.  how: survey_df.Gender.value_counts()
 
 pd_df.columns
 
@@ -57,6 +57,12 @@ plt.pie(gender_counts, labels=gender_counts.index, autopct='%1.1f%%', startangle
 Plot on 1 col based on how much:
 
 sns.countplot(y=survey_df.EdLevel)
-plt.xticks(rotation=75);
+plt.xticks(rotation=75);    #label rotate
+
+
+
+Q.Hist:  hist is a bar of same type value. just pass the col.
+
+Q.barplot?  barplot is bar of index[cat] and its value
 
 
