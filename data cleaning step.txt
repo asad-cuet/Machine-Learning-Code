@@ -6,7 +6,7 @@ for all col:pd.read_csv(name_var,index_col='Column')
 
 for 1 col:pd.read_csv(name_var,index_col='Column').loc['column']
 
-For q. series:schema_raw=pd.read_csv(name_var,index_col='Column').QuestionText
+For q. series:schema_raw=pd.read_csv('schema.csv',index_col='Column').QuestionText
 
     now for get Q. just type: schema_raw['col']
 
@@ -26,38 +26,21 @@ Clean data step:
 
 6.Clean gender type column.  how: survey_df.Gender.value_counts()
 
-pd_df.columns
 
 
-drop col: [old]
 
-  pd_df.drop(columns=['col'],inplace=True)
+
 
 drop row:
 
    pd_df.drop(df[df.col>10].index,inplace=True)
 
-Type value Counts of a col:
-
-   pd_df['col'].value_counts()
 
 Index on plotting:
    df = data.col.value_counts()
    sns.barplot(x=df.index,y=df)
 
 
-Pie Chart:
-
-gender_counts = survey_df.Gender.value_counts()
-plt.figure(figsize=(12,6))
-plt.title(schema.Gender)
-plt.pie(gender_counts, labels=gender_counts.index, autopct='%1.1f%%', startangle=180);
-
-
-Plot on 1 col based on how much:
-
-sns.countplot(y=survey_df.EdLevel)
-plt.xticks(rotation=75);    #label rotate
 
 
 
