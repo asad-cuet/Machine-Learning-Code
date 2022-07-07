@@ -14,17 +14,45 @@ For q. series:schema_raw=pd.read_csv('schema.csv',index_col='Column').QuestionTe
 
 Clean data step:
 
-1.df.info()    ,see dtype,there is object type,which shoub be numeric.
+1.df.info()                                   ,see dtype,there is object type,which shoub be numeric.
 
-2.find reason of object type: df.col.unique()         ,observe the non-numeric value   // .nunique() returns quantity
+**Object or non-numeric type column:**
 
-3.replace non-num by num=Nan    ,how:df.col= pd.to_numeric(df.col,errors='coerce')
+2.observe data type: df.col.unique()                       ,observe the non-numeric value   // .nunique() returns quantity
 
-4.after 3 for all num col.observe etc by df.describe().
+**Numeric type column:**
 
-5.Remove illogical row by:  pd_df.drop(df[df.col>10].index,inplace=True)
+3.replace non-num value by num=Nan in num column   ,how:df.col= pd.to_numeric(df.col,errors='coerce')
 
-6.Clean gender type column.  how: survey_df.Gender.value_counts()
+4. If you need to remove  empty row use: df=df.dropna()
+
+4. If you need to replace  empty row use: df=df.fillna(130, inplace = True)   //replaced by 130
+
+5. if you need to replace data: 
+
+import numpy as np
+
+df['Goal_assist'] = df['Goal_assist'].replace(np.nan, 'Own')
+
+6.Correct date if there is any num value: df['Date'] = pd.to_datetime(df['Date'])
+
+7.If you need to change any wrong data:
+
+for x in df.index:
+  if df.loc[x, "Duration"] > 120:
+    df.loc[x, "Duration"] = 120
+
+8.If there is any duplicate row:
+
+print(df.duplicated())
+
+df.drop_duplicates(inplace = True)  //removing
+
+9.after 3 for all num col.observe etc by df.describe().
+
+10.Remove illogical row by:  pd_df.drop(df[df.col>10].index,inplace=True)
+
+11.Clean gender type column.  how: survey_df.Gender.value_counts()
 
 
 
@@ -49,3 +77,5 @@ Q.Hist:  hist is a bar of same type value. just pass the col.
 Q.barplot?  barplot is bar of index[cat] and its value
 
 
+
+See all row:  pandas.set_option('display.max_rows', df.shape[0]+1)

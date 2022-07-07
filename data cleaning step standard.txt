@@ -1,0 +1,80 @@
+
+Clean data step:
+
+1.df.info()                                   ,see dtype,there is object type,which shoub be numeric.
+
+2.observe column value: df.col.unique()   
+
+**Object or non-numeric type column:**
+
+   0.See which value have how much:   df.Gender.value_counts()
+
+   i.if there is empty cell:   df.col.dropna()  //remove row,without col,done in all col
+
+
+
+
+   ii.if there is nan cell:    df.col.fillna(130, inplace = True)   //replaced by 130  ,
+
+                               df['col'].replace(np.nan, 'Own')
+
+
+
+   iii.If there is any duplicate row:     print(df.duplicated())
+
+                                          df.drop_duplicates(inplace = True)  //removing
+
+
+
+**Numeric type column:**
+
+
+   0.See which value have how much:   df.Gender.value_counts()
+
+   i.if there is empty cell:   df.col.dropna()  //remove row,without col,done in all col
+
+
+
+
+   ii.if there is nan cell:    df.col.fillna(130, inplace = True)   //replaced by 130  ,
+
+                               df['col'].replace(np.nan, 'Own')
+
+
+
+   iii.If there is any duplicate row:     print(df.duplicated())
+
+                                          df.drop_duplicates(inplace = True)  //removing
+
+
+
+   iv.There can be some illogical value.
+      Remove illogical row by:              df.drop(df[df.col>10].index,inplace=True)
+
+                                            for x in df.index:
+                                                if df.loc[x, "Duration"] > 120:
+                                                        df.loc[x, "Duration"] = 120
+
+                               
+
+   v.replace object value by numeric=Nan:     df.col= pd.to_numeric(df.col,errors='coerce')
+
+
+
+
+
+3.after observe etc by df.describe().
+
+
+4.Correct date if there is any num value: df['Date'] = pd.to_datetime(df['Date'])
+
+
+
+
+
+
+
+
+
+
+
