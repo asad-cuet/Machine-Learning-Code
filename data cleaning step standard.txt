@@ -1,12 +1,12 @@
 
 Clean data step:
-
+================
 1.df.info()                                   ,see dtype,there is object type,which shoub be numeric.
-
+------------
 2.observe column value: df.col.unique()   
-
+---------------------------------------
 **Object or non-numeric type column:**
-
+--------------------------------------
    0.See which value have how much:   df.Gender.value_counts()
 
    i.if there is empty cell:   df.col.dropna()  //remove row,without col,done in all col
@@ -14,7 +14,7 @@ Clean data step:
 
 
 
-   ii.if there is nan cell:    df.col.fillna(130, inplace = True)   //replaced by 130  ,
+   ii.if there is nan cell:    df.col.fillna('exp', inplace = True)   //replaced by exp  ,
 
                                df['col'].replace(np.nan, 'Own')
 
@@ -27,7 +27,7 @@ Clean data step:
 
 
 **Numeric type column:**
-
+-------------------------
 
    0.See which value have how much:   df.Gender.value_counts()
 
@@ -64,11 +64,23 @@ Clean data step:
 
 
 3.after observe etc by df.describe().
-
+--------------------------------------
 
 4.Correct date if there is any num value: df['Date'] = pd.to_datetime(df['Date'])
+-------------------------------------------------------------------------------
+
+5.Suppose 'Smoker' column have 'Yes' or 'No' value. How to replace them by 1 or 0:
+---------------------------------------------------------------------------------
+      smoker_values = {'no': 0, 'yes': 1}
+      smoker_numeric = medical_df.smoker.map(smoker_values)  #map takes function or dictionary.if no return 0, if yes return 1
+
+      changing in dataset:
+      ====================
+      smoker_codes = {'no': 0, 'yes': 1}
+      medical_df['smoker_code'] = medical_df.smoker.map(smoker_codes)
 
 
+6.
 
 
 
