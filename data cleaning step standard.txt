@@ -49,7 +49,7 @@ Clean data step:
 
 
    iv.There can be some illogical value.
-      Remove illogical row by:              df.drop(df[df.col>10].index,inplace=True)
+      Remove illogical row by query:              df.drop(df[df.col>10].index,inplace=True)
 
                                             for x in df.index:
                                                 if df.loc[x, "Duration"] > 120:
@@ -58,6 +58,10 @@ Clean data step:
                                
 
    v.replace object value by numeric=Nan:     df.col= pd.to_numeric(df.col,errors='coerce')
+
+
+
+
 
 
 

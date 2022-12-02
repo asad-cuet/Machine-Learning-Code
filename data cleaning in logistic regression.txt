@@ -1,0 +1,13 @@
+Numeric Column:
+===============
+===============
+
+1.Imputation:  
+=============
+The process of filling missing values is called imputation:
+
+
+                      from sklearn.impute import SimpleImputer
+                      imputer=SimpleImputer(strategy='mean')     //replace by mean value
+                      imputer.fit(raw_df[numeric_cols_only])
+                      raw_df[numeric_cols_only]=imputer.transform(raw_df[numeric_cols_only])
