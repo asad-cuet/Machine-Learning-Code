@@ -1,0 +1,101 @@
+#include <stdio.h>
+#include <string.h>
+
+  char str1[20] = "Hello ";
+  char str2[] = "World!";
+ 
+  // Concatenate str2 to str1 (the result is stored in str1)
+  strcat(str1, str2);   sum
+  // Copy str1 to str2
+  strcpy(str2, str1);
+  // Compare str1 and str2, and print the result
+  printf("%d\n", strcmp(str1, str2));
+
+  char greetings[] = {'H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd', '!', '\0'};
+  char greetings2[] = "Hello World!";
+
+  printf("%lu\n", sizeof(greetings));   //total
+  printf("%lu\n", strlen(greetings2));  //ignor empty
+
+
+
+#include <ctype.h>
+
+The isalpha() function checks whether a character is an alphabet or not.
+'Q' Result when uppercase alphabet is passed: 1
+'q' Result when lowercase alphabet is passed: 2
+'+' Result when non-alphabetic character is passed: 0
+
+
+#include <ctype.h>
+if (isdigit(ch))
+        printf("\nEntered character is"
+               " numeric character");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+int main() {
+
+      char word[]="abdzazzcb";
+      char unique_ch[]="";
+      
+      int len=strlen(word);
+      int unique_flag;
+      
+      int i,j;
+      for(i=0;i<len;i++)
+      {
+          unique_flag=0;
+          for(j=0;j<len;j++)
+          {
+              
+              if(word[i]==word[j] && i!=j)
+              {
+                 //strcat(unique_ch,word[i]);
+                 
+                 unique_flag=0;
+              }
+              else
+              {
+              unique_flag=1;
+              }
+          }
+          if(unique_flag==1)
+              {
+              printf("%c",word[i]);
+              }
+      }
+      
+      //printf("%s",unique_ch);
+      
+      
+      
+      
+      
+      //printf("%c",word[1]);
+
+  
+      return 0;
+}
